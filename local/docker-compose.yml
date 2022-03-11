@@ -1,0 +1,37 @@
+version: '3'
+services:
+  cassandra:
+    image: bitnami/cassandra:4.0.1
+    ports:
+      - 7000:7000
+      - 9042:9042
+    environment:
+      CASSANDRA_SEEDS: cassandra
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 128M
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        SLEEP_TIME=5
+        CQL=$$(echo "CREATE KEYSPACE IF NOT EXISTS dyp WITH REPLICATION={'class':'SimpleStrategy','replication_factor':'1'};")
+        until echo $$CQL | cqlsh -u cassandra -p cassandra; do
+          echo "cqlsh: Cassandra is unavailable to initialize - will retry later"
+          sleep 1
+        done &
+        CQL_INSERT_AUTHORITY=$$(echo "CREATE TYPE IF NOT EXISTS dyp.authority (roleCode text, roleDescription text,);")
+        until echo $$CQL_INSERT_AUTHORITY | cqlsh -u cassandra -p cassandra; do
+          echo "cqlsh: DB is unavailable to initialize - will retry later"
+          sleep $$SLEEP_TIME
+        done &
+        CQL_INSERT_USER_DETAILS=$$(echo "CREATE TABLE IF NOT EXISTS dyp.user_details(id timeuuid, userName text, password text, createdAt date, updateAt date, firstName text, lastNam text, email text, phoneNumber text, enabled boolean, authorities list<frozen<authority>>, primary key (id));")
+        until echo $$CQL_INSERT_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
+          echo "cqlsh: DB is unavailable to initialize - will retry later"
+          sleep $$SLEEP_TIME
+        done &
+        CQL_USER_DETAILS=$$(echo "INSERT INTO dyp.user_details (id, userName, password, enabled, authorities) VALUES (ab84024e-a096-11ec-b909-0242ac120002, 'shakhzod', 'shakhzod123', true, [{rolecode:'ADMIN',roledescription:'all permission'}]);")
+        until echo $$CQL_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
+          echo "cqlsh: DB is unavailable to initialize - will retry later"
+          sleep $$SLEEP_TIME
+        done &
+        exec /opt/bitnami/scripts/cassandra/entrypoint.sh /opt/bitnami/scripts/cassandra/run.sh

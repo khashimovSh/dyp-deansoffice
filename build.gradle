@@ -1,0 +1,51 @@
+plugins {
+	id 'idea'
+	id 'java-library'
+	id 'jacoco'
+	id 'org.springframework.boot' version '2.6.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'com.avast.gradle.docker-compose' version '0.14.13'
+}
+
+group = 'dyp.security'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+apply from: "${rootProject.projectDir}/libraries.gradle"
+
+dependencies {
+	implementation (
+			libraries.cassandraMigration,
+			libraries.springDataCassandra,
+			libraries.springBootSecurity,
+			libraries.springBootStarterWeb,
+			libraries.jwt,
+			libraries.javaPersistence,
+			libraries.jakarta,
+			libraries.glassFish,
+	)
+	testImplementation (
+			testLibraries.springBootTest,
+			testLibraries.springSecurityTest
+	)
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+

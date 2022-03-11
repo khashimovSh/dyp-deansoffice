@@ -1,0 +1,27 @@
+ext {
+    versions = [
+            cassandraMigration   : "2.4.0_v4",
+            springBootStarterWeb : "2.6.3",
+            jwt                  : "0.9.1",
+            javaPersistence      : "2.2",
+            jakarta              : "2.3.2",
+            glassFish            : "2.3.2",
+    ]
+
+    libraries = [
+            springBootSecurity     :  "org.springframework.boot:spring-boot-starter-security",
+            cassandraMigration     :  "org.cognitor.cassandra:cassandra-migration-spring-boot-starter:$versions.cassandraMigration",
+            springDataCassandra    :  "org.springframework.boot:spring-boot-starter-data-cassandra",
+            springBootStarterWeb   : "org.springframework.boot:spring-boot-starter-web:$versions.springBootStarterWeb",
+            jwt                    : "io.jsonwebtoken:jjwt:$versions.jwt",
+            javaPersistence        : "javax.persistence:javax.persistence-api:$versions.javaPersistence",
+            jakarta                : "jakarta.xml.bind:jakarta.xml.bind-api:$versions.jakarta",
+            glassFish              : "org.glassfish.jaxb:jaxb-runtime:$versions.glassFish",
+    ]
+
+    testLibraries = [
+            springBootTest        : "org.springframework.boot:spring-boot-starter-test",
+            springSecurityTest    : "org.springframework.security:spring-security-test"
+
+    ]
+}
