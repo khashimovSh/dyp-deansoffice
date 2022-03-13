@@ -1,4 +1,4 @@
-package dyp.security.util;
+package dyp.deansoffice.util;
 
 import org.junit.jupiter.api.Test;
 

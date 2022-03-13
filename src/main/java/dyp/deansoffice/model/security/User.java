@@ -1,4 +1,4 @@
-package dyp.security.model;
+package dyp.deansoffice.model.security;
 
 import java.util.Collection;
 import java.util.Date;

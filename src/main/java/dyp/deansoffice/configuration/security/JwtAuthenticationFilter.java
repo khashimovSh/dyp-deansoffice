@@ -1,6 +1,6 @@
-package dyp.security.configuration;
+package dyp.deansoffice.configuration.security;
 
-import dyp.security.util.JwtTokenHelper;
+import dyp.deansoffice.util.JwtTokenHelper;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

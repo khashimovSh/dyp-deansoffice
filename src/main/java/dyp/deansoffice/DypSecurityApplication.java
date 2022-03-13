@@ -1,4 +1,4 @@
-package dyp.security;
+package dyp.deansoffice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package dyp.security.repository;
+package dyp.deansoffice.repository;
 
-import dyp.security.model.User;
+import dyp.deansoffice.model.security.User;
 import java.util.UUID;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.data.cassandra.repository.Query;
