@@ -1,7 +1,10 @@
 # **Deans office project**
 
-Project which will generate `jwt token` for
-further secure endpoints
+_First user have to login:
+`jwt token` will ge generated_
+
+_User can add new student if he is ADMIN_
+
 
 ## **What this service has:**
     * Spring Security with JWT
