@@ -1,10 +1,10 @@
-package dyp.security.controller;
+package dyp.deansoffice.controller;
 
-import dyp.security.util.JwtTokenHelper;
-import dyp.security.model.AuthenticationRequest;
-import dyp.security.model.LoginResponse;
-import dyp.security.model.User;
-import dyp.security.model.UserInfo;
+import dyp.deansoffice.util.JwtTokenHelper;
+import dyp.deansoffice.model.AuthenticationRequest;
+import dyp.deansoffice.model.LoginResponse;
+import dyp.deansoffice.model.security.User;
+import dyp.deansoffice.model.security.UserInfo;
 import java.security.Principal;
 
 import java.util.Objects;

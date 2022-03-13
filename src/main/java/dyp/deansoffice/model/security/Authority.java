@@ -1,4 +1,4 @@
-package dyp.security.model;
+package dyp.deansoffice.model.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package dyp.security.configuration;
+package dyp.deansoffice.configuration;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
