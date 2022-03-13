@@ -1,6 +1,6 @@
-# **Security for Deans office project**
+# **Deans office project**
 
-Enter point of the project which will generate `jwt token` for
+Project which will generate `jwt token` for
 further secure endpoints
 
 ## **What this service has:**
