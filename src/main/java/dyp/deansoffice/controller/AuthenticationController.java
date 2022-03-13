@@ -1,8 +1,8 @@
 package dyp.deansoffice.controller;
 
 import dyp.deansoffice.util.JwtTokenHelper;
-import dyp.deansoffice.model.AuthenticationRequest;
-import dyp.deansoffice.model.LoginResponse;
+import dyp.deansoffice.model.endpoint.AuthenticationRequest;
+import dyp.deansoffice.model.endpoint.LoginResponse;
 import dyp.deansoffice.model.security.User;
 import dyp.deansoffice.model.security.UserInfo;
 import java.security.Principal;
@@ -15,7 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenHelper jwtTokenHelper;

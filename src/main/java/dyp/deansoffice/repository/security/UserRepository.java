@@ -1,4 +1,4 @@
-package dyp.deansoffice.repository;
+package dyp.deansoffice.repository.security;
 
 import dyp.deansoffice.model.security.User;
 import java.util.UUID;

@@ -1,8 +1,8 @@
 package dyp.deansoffice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dyp.deansoffice.model.AuthenticationRequest;
-import dyp.deansoffice.service.CustomUserService;
+import dyp.deansoffice.model.endpoint.AuthenticationRequest;
+import dyp.deansoffice.service.security.CustomUserService;
 import dyp.deansoffice.util.JwtTokenHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

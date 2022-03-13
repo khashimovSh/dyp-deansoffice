@@ -1,4 +1,4 @@
-package dyp.deansoffice.model;
+package dyp.deansoffice.model.endpoint;
 
 import lombok.Builder;
 import lombok.Data;
