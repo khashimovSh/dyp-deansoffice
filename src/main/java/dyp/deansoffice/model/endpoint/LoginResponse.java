@@ -1,4 +1,4 @@
-package dyp.deansoffice.model;
+package dyp.deansoffice.model.endpoint;
 
 public class LoginResponse {
 

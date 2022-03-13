@@ -1,7 +1,6 @@
 package dyp.deansoffice.configuration.security;
 
-import dyp.deansoffice.configuration.security.JwtAuthenticationFilter;
-import dyp.deansoffice.service.CustomUserService;
+import dyp.deansoffice.service.security.CustomUserService;
 import dyp.deansoffice.util.JwtTokenHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

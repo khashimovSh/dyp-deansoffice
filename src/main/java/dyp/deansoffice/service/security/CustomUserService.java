@@ -1,6 +1,6 @@
-package dyp.deansoffice.service;
+package dyp.deansoffice.service.security;
 
-import dyp.deansoffice.repository.UserRepository;
+import dyp.deansoffice.repository.security.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

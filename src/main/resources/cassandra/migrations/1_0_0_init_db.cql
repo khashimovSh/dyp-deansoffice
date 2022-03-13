@@ -20,3 +20,17 @@ CREATE TABLE IF NOT EXISTS user_details
     primary key (id)
 );
 
+CREATE TABLE IF NOT EXISTS student
+(
+    id                  timeuuid,
+    firstName           text,
+    lastName            text,
+    major               text,
+    dateOfBirth         timestamp,
+    startDateOfStudies  timestamp,
+    nationality         text,
+    placeOfBirth        text,
+    active              boolean,
+    primary key (id)
+);
+
