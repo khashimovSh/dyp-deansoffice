@@ -11,5 +11,6 @@ _User can add new student if he is ADMIN_
     * Cassandra database 
     * docker-compose file for cassandra image
     * gradle build tool
+    * artifact will be stored in jfrog
     * lombok
     * other dependencies...
