@@ -1,6 +1,6 @@
 package dyp.deansoffice.model.student;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,9 +26,9 @@ public class StudentEntity {
     private String lastName;
     private String major;
     @CassandraType(type = Name.DATE)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     @CassandraType(type = Name.DATE)
-    private Date startDateOfStudies;
+    private LocalDate startDateOfStudies;
     private String nationality;
     private String placeOfBirth;
     private boolean active;

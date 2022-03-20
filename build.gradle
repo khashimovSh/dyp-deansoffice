@@ -6,6 +6,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'com.avast.gradle.docker-compose' version '0.14.13'
+	id 'maven-publish'
 }
 
 group = 'dyp.security'
@@ -26,6 +27,8 @@ dependencies {
 			libraries.jakarta,
 			libraries.glassFish,
 	)
+	implementation 'commons-collections:commons-collections:3.2.1:sources'
+	implementation 'com.google.code.gson:gson:2.3.1:sources'
 	testImplementation (
 			testLibraries.springBootTest,
 			testLibraries.springSecurityTest
@@ -49,3 +52,34 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	doc {
+		transitive false
+	}
+}
+
+javadoc {
+	source configurations.doc.collect { zipTree(it) }
+	include '**/*.java'
+	options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+publishing {
+	repositories {
+		maven {
+			url 'https://deansoffice.jfrog.io/artifactory/default-maven-local'
+			credentials {
+				username = "${artifactory_user}"
+				password = "${artifactory_password}"
+			}
+		}
+	}
+	publications {
+		mavenJava(MavenPublication) {
+			groupId project.group
+			artifactId project.name
+			version version
+			from components.java
+		}
+	}
+}
