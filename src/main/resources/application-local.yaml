@@ -1,10 +1,23 @@
 spring:
+  config:
+    activate:
+      on-profile: local
+
   data:
     cassandra:
-      contact-points: localhost
-      port: 9042
       keyspace-name: dyp
-      username: cassandra
-      password: cassandra
-      schema-action: none
-      local-datacenter: datacenter1
+      request.timeout: 20s
+
+cassandra:
+  contact-points: localhost
+  port: 9042
+  keyspace-name: dyp
+  username: cassandra
+  password: cassandra
+  schema-action: none
+  local-datacenter: datacenter1
+
+jwt.auth:
+  app: Spring-Security-App
+  secret_key: testkey#secret@12334
+  expires_in: 10

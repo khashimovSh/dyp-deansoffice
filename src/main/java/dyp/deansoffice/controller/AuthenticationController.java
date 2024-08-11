@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,14 +28,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 @CrossOrigin
 public class AuthenticationController {
-    private final AuthenticationManager authenticationManager;
+
+    private final AuthenticationProvider authenticationProvider;
     private final JwtTokenHelper jwtTokenHelper;
     private final UserDetailsService userDetailsService;
 
     @PostMapping("/auth/login")
     public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) {
         System.out.println(authenticationRequest);
-        final var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+        final var authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(
             authenticationRequest.getUserName(), authenticationRequest.getPassword()));
         if (Objects.isNull(authentication))
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(authenticationRequest);

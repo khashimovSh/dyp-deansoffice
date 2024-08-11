@@ -15,6 +15,8 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.annotation.Nullable;
+
 @Data
 @Generated
 @Builder(toBuilder = true)

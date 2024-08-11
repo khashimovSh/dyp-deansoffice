@@ -4,6 +4,7 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import org.cognitor.cassandra.migration.spring.CassandraMigrationAutoConfiguration;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -14,18 +15,32 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 @EnableCassandraRepositories
 class CassandraConfiguration {
 
+    @Value("${cassandra.username}")
+    private String username;
+
+    @Value("${cassandra.password}")
+    private String password;
+
+    @Value("${cassandra.local-datacenter}")
+    private String localDatacenter;
+
     @Lazy
     @Bean
     @Qualifier(CassandraMigrationAutoConfiguration.CQL_SESSION_BEAN_NAME)
     public CqlSession cassandraMigrationCqlSession(CqlSessionBuilder cqlSessionBuilder) {
-        return cqlSessionBuilder.build();
+        return cqlSessionBuilder
+                .withAuthCredentials(username, password)
+                .withLocalDatacenter(localDatacenter)
+                .build();
     }
 
     @Lazy
     @Bean
     @Primary
     public CqlSession cassandraSession(CqlSessionBuilder cqlSessionBuilder) {
-        return cqlSessionBuilder.build();
+        return cqlSessionBuilder
+                .withAuthCredentials(username, password)
+                .withLocalDatacenter(localDatacenter)
+                .build();
     }
-
 }

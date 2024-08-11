@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -21,6 +21,7 @@ public class JwtTokenHelper {
     @Value("${jwt.auth.app}")
     private String appName;
 
+    @Setter
     @Value("${jwt.auth.secret_key}")
     private String secretKey;
 
@@ -123,7 +124,4 @@ public class JwtTokenHelper {
         return request.getHeader("Authorization");
     }
 
-    public void setSecretKey(String key) {
-        this.secretKey = key;
-    }
 }

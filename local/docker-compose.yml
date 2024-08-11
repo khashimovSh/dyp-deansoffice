@@ -24,7 +24,7 @@ services:
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME
         done &
-        CQL_INSERT_USER_DETAILS=$$(echo "CREATE TABLE IF NOT EXISTS dyp.user_details(id timeuuid, userName text, password text, createdAt date, updateAt date, firstName text, lastNam text, email text, phoneNumber text, enabled boolean, authorities list<frozen<authority>>, primary key (id));")
+        CQL_INSERT_USER_DETAILS=$$(echo "CREATE TABLE IF NOT EXISTS dyp.user_details(id timeuuid, username text, password text, createdat date, updateat date, firstname text, lastname text, email text, phonenumber text, enabled boolean, authorities list<frozen<authority>>, primary key (id));")
         until echo $$CQL_INSERT_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME

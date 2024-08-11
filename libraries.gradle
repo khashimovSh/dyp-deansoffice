@@ -1,7 +1,7 @@
 ext {
     versions = [
             cassandraMigration   : "2.4.0_v4",
-            springBootStarterWeb : "2.6.3",
+            springBootStarterWeb : "3.2.0",
             jwt                  : "0.9.1",
             javaPersistence      : "2.2",
             jakarta              : "2.3.2",
