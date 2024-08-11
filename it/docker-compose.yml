@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   cassandra:
     image: bitnami/cassandra:4.0.1
@@ -29,7 +29,7 @@ services:
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME
         done &
-        CQL_USER_DETAILS=$$(echo "INSERT INTO dyp.user_details (id, userName, password, enabled, authorities) VALUES (ab84024e-a096-11ec-b909-0242ac120002, 'shakhzod', '\$2a\$10\$5zYqJ99tRYRCuBw3QFgGp.ch7arJszUJYU/634frox8u5LRqqv9Le', true, [{rolecode:'ADMIN',roledescription:'all permission'}]);")
+        CQL_USER_DETAILS=$$(echo "INSERT INTO dyp.user_details (id, userName, password, enabled, authorities) VALUES (ab84024e-a096-11ec-b909-0242ac120002, 'shakhzod', 'shakhzod123', true, [{rolecode:'ADMIN',roledescription:'all permission'}]);")
         until echo $$CQL_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME

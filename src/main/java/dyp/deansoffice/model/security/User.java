@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String phoneNumber;
+    @Builder.Default
     private boolean enabled=true;
     private List<Authority> authorities;
 

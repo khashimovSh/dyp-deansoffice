@@ -1,15 +1,3 @@
-spring.data.cassandra:
-  keyspace-name: dyp
-  request.timeout: 20s
-
-cassandra:
-  migration:
-    keyspace-name: dyp
-    script-location: "cassandra/migrations"
-    strategy: IGNORE_DUPLICATES
-    table-prefix: "dyp_security"
-
-jwt.auth:
-  app: Spring-Security-App
-  secret_key: testkey#secret@12334
-  expires_in: 10
+spring:
+  profiles:
+    active: local
