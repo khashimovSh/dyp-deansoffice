@@ -6,6 +6,7 @@ ext {
             javaPersistence      : "2.2",
             jakarta              : "2.3.2",
             glassFish            : "2.3.2",
+            restAssured          : "5.5.0"
     ]
 
     libraries = [
@@ -21,7 +22,8 @@ ext {
 
     testLibraries = [
             springBootTest        : "org.springframework.boot:spring-boot-starter-test",
-            springSecurityTest    : "org.springframework.security:spring-security-test"
+            springSecurityTest    : "org.springframework.security:spring-security-test",
+            restAssured          : "io.rest-assured:rest-assured:$versions.restAssured"
 
     ]
 }

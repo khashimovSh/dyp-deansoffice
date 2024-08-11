@@ -15,8 +15,6 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.annotation.Nullable;
-
 @Data
 @Generated
 @Builder(toBuilder = true)
@@ -35,6 +33,7 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String phoneNumber;
+    @Builder.Default
     private boolean enabled=true;
     private List<Authority> authorities;
 

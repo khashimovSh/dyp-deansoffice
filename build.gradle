@@ -31,15 +31,25 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.3.1:sources'
 	testImplementation (
 			testLibraries.springBootTest,
-			testLibraries.springSecurityTest
+			testLibraries.springSecurityTest,
+			testLibraries.restAssured
 	)
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
+dockerCompose {
+	useComposeFiles.add('it/docker-compose.yml')
+	isRequiredBy(tasks.test)
+}
+
+
 test {
 	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
 
 configurations {
