@@ -14,12 +14,12 @@ import org.springframework.security.core.GrantedAuthority;
 @UserDefinedType("authority")
 public class Authority implements GrantedAuthority {
 
-    private String roleCode;
+    private Role role;
     private String roleDescription;
 
     @Override
     public String getAuthority() {
         // TODO Auto-generated method stub
-        return roleCode;
+        return role.name();
     }
 }

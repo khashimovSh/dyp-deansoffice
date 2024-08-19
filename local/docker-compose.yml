@@ -19,7 +19,7 @@ services:
           echo "cqlsh: Cassandra is unavailable to initialize - will retry later"
           sleep 1
         done &
-        CQL_INSERT_AUTHORITY=$$(echo "CREATE TYPE IF NOT EXISTS dyp.authority (roleCode text, roleDescription text,);")
+        CQL_INSERT_AUTHORITY=$$(echo "CREATE TYPE IF NOT EXISTS dyp.authority (role text, roledescription text,);")
         until echo $$CQL_INSERT_AUTHORITY | cqlsh -u cassandra -p cassandra; do
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME
@@ -29,8 +29,13 @@ services:
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME
         done &
-        CQL_USER_DETAILS=$$(echo "INSERT INTO dyp.user_details (id, userName, password, enabled, authorities) VALUES (ab84024e-a096-11ec-b909-0242ac120002, 'shakhzod', '\$2a\$10\$5zYqJ99tRYRCuBw3QFgGp.ch7arJszUJYU/634frox8u5LRqqv9Le', true, [{rolecode:'ADMIN',roledescription:'all permission'}]);")
+        CQL_USER_DETAILS=$$(echo "INSERT INTO dyp.user_details (id, userName, password, enabled, authorities) VALUES (ab84024e-a096-11ec-b909-0242ac120002, 'shakhzod', '\$2a\$10\$5zYqJ99tRYRCuBw3QFgGp.ch7arJszUJYU/634frox8u5LRqqv9Le', true, [{role:'ADMIN',roledescription:'all permission'}]);")
         until echo $$CQL_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
+          echo "cqlsh: DB is unavailable to initialize - will retry later"
+          sleep $$SLEEP_TIME
+        done &
+        CQL_INSERT_USER_DETAILS=$$(echo "CREATE TABLE IF NOT EXISTS dyp.student (id TIMEUUID, student_id TEXT, firstname TEXT, lastname TEXT, email TEXT, phone_number TEXT, address TEXT, date_of_birth DATE, place_of_birth TEXT, nationality TEXT, sex TEXT, level TEXT, faculty TEXT, group TEXT, form_of_study TEXT, head_teacher TEXT, start_date DATE, estimated_end_date DATE, active BOOLEAN, PRIMARY KEY (id, student_id));")
+        until echo $$CQL_INSERT_USER_DETAILS | cqlsh -u cassandra -p cassandra; do
           echo "cqlsh: DB is unavailable to initialize - will retry later"
           sleep $$SLEEP_TIME
         done &
