@@ -1,14 +1,12 @@
-package dyp.deansoffice.model.security;
+package dyp.deansoffice.entity;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+
+import dyp.deansoffice.model.security.Authority;
+import lombok.*;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -20,8 +18,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table("user_details")
-public class User implements UserDetails {
+public class UserDetailsEntity implements UserDetails {
     @PrimaryKey
     @CassandraType(type = CassandraType.Name.TIMEUUID)
     private UUID id;

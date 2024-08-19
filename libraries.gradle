@@ -6,18 +6,21 @@ ext {
             javaPersistence      : "2.2",
             jakarta              : "2.3.2",
             glassFish            : "2.3.2",
-            restAssured          : "5.5.0"
+            restAssured          : "5.5.0",
+            mapstruct            : "1.5.5.Final"
     ]
 
     libraries = [
             springBootSecurity     :  "org.springframework.boot:spring-boot-starter-security",
             cassandraMigration     :  "org.cognitor.cassandra:cassandra-migration-spring-boot-starter:$versions.cassandraMigration",
             springDataCassandra    :  "org.springframework.boot:spring-boot-starter-data-cassandra",
-            springBootStarterWeb   : "org.springframework.boot:spring-boot-starter-web:$versions.springBootStarterWeb",
-            jwt                    : "io.jsonwebtoken:jjwt:$versions.jwt",
-            javaPersistence        : "javax.persistence:javax.persistence-api:$versions.javaPersistence",
-            jakarta                : "jakarta.xml.bind:jakarta.xml.bind-api:$versions.jakarta",
-            glassFish              : "org.glassfish.jaxb:jaxb-runtime:$versions.glassFish",
+            springBootStarterWeb   :  "org.springframework.boot:spring-boot-starter-web:$versions.springBootStarterWeb",
+            jwt                    :  "io.jsonwebtoken:jjwt:$versions.jwt",
+            javaPersistence        :  "javax.persistence:javax.persistence-api:$versions.javaPersistence",
+            jakarta                :  "jakarta.xml.bind:jakarta.xml.bind-api:$versions.jakarta",
+            glassFish              :  "org.glassfish.jaxb:jaxb-runtime:$versions.glassFish",
+            mapstruct              :  "org.mapstruct:mapstruct:$versions.mapstruct",
+            mapstructProcessor     :  "org.mapstruct:mapstruct-processor:$versions.mapstruct"
     ]
 
     testLibraries = [

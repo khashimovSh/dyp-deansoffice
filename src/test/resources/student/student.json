@@ -1,0 +1,19 @@
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "email": "john.doe@deans.com",
+  "phoneNumber": "+48577555555",
+  "address": "Grupy AK 'Północ' 4",
+  "dateOfBirth": "2006-05-15",
+  "placeOfBirth": "Uch-Emchek",
+  "nationality": "Poland",
+  "sex": "Male",
+  "level": "Undergraduate",
+  "faculty": "Engineering",
+  "group": "Group A",
+  "formOfStudy": "Full-time",
+  "headTeacher": "Dr. Smith",
+  "startDate": "2024-09-01",
+  "estimatedEndDate": "2028-05-15",
+  "active": true
+}

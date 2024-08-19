@@ -24,6 +24,9 @@ class CassandraConfiguration {
     @Value("${cassandra.local-datacenter}")
     private String localDatacenter;
 
+    @Value("${cassandra.keyspace-name}")
+    private String keyspace;
+
     @Lazy
     @Bean
     @Qualifier(CassandraMigrationAutoConfiguration.CQL_SESSION_BEAN_NAME)
@@ -31,6 +34,7 @@ class CassandraConfiguration {
         return cqlSessionBuilder
                 .withAuthCredentials(username, password)
                 .withLocalDatacenter(localDatacenter)
+                .withKeyspace(keyspace)
                 .build();
     }
 
@@ -41,6 +45,7 @@ class CassandraConfiguration {
         return cqlSessionBuilder
                 .withAuthCredentials(username, password)
                 .withLocalDatacenter(localDatacenter)
+                .withKeyspace(keyspace)
                 .build();
     }
 }

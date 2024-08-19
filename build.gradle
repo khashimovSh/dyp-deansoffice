@@ -2,7 +2,7 @@ plugins {
 	id 'idea'
 	id 'java-library'
 	id 'jacoco'
-	id 'org.springframework.boot' version '3.2.0'
+	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
 	id 'java'
 	id 'com.avast.gradle.docker-compose' version '0.14.13'
@@ -26,7 +26,9 @@ dependencies {
 			libraries.javaPersistence,
 			libraries.jakarta,
 			libraries.glassFish,
+			libraries.mapstruct
 	)
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0'
 	implementation 'commons-collections:commons-collections:3.2.1:sources'
 	implementation 'com.google.code.gson:gson:2.3.1:sources'
 	testImplementation (
@@ -36,14 +38,16 @@ dependencies {
 	)
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor (
+		'org.projectlombok:lombok',
+		libraries.mapstructProcessor
+	)
 }
 
 dockerCompose {
 	useComposeFiles.add('it/docker-compose.yml')
 	isRequiredBy(tasks.test)
 }
-
 
 test {
 	useJUnitPlatform()
@@ -74,22 +78,31 @@ javadoc {
 	options.addStringOption('Xdoclint:none', '-quiet')
 }
 
+
+task sourceJar(type: Jar) {
+	from sourceSets.main.allSource
+}
+
 publishing {
 	repositories {
 		maven {
-			url 'https://deansoffice.jfrog.io/artifactory/default-maven-local'
+			allowInsecureProtocol = true
+			url System.getenv('NEXUS_REPO_URL')
 			credentials {
-				username = "${artifactory_user}"
-				password = "${artifactory_password}"
+				username = System.getenv('NEXUS_REPO_USERNAME')
+				password = System.getenv('NEXUS_REPO_PASSWORD')
 			}
 		}
 	}
 	publications {
 		mavenJava(MavenPublication) {
-			groupId project.group
-			artifactId project.name
-			version version
 			from components.java
+
+			groupId = 'dyp.deansoffice'
+			artifactId = 'deansoffice-ui'
+			version = '1.0.0'
+
+			artifact sourceJar
 		}
 	}
 }
